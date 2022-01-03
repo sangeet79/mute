@@ -1,3 +1,103 @@
+# Mute mode for Minetest, totally based on xban mod: https://github.com/minetest-mods/xban2
+
+I made a made xban work as mute, so its a very crude hack, but it works :) with minir bugs.
+
+All commands are very close to xban:
+
+### `mute`
+
+Mutes a player temporarily.
+
+**Usage:** `/mute <player_or_ip> <time> <reason>`
+
+The `time` parameter is a string in the format `<count><unit>` where `<unit>`
+is one of `s` for seconds, `m` for minutes, `h` for hours, `D` for days, `W`
+for weeks, `M` for months, or `Y` for years. If the unit is omitted, it is
+assumed to mean seconds. For example, `42s` means 42 seconds, `1337m` 1337
+minutes, and so on. You can chain more than one such group and they will add
+up. For example, `1Y3M3D7h` will ban for 1 year, 3 months, 3 days and 7 hours.
+
+**Example:** `/mute Joe 3600 Some reason.`
+
+### `permamute`
+
+Mutes a player permanently.
+
+**Usage:** `/permamute <player_or_ip> <reason>`
+
+**Example:** `/permamute 127.0.0.1 Some reason.`
+
+### `unmute`
+
+Unmutes a player.
+
+**Usage:** `/unmute <player_or_ip>`
+
+**Example:** `/unmute Joe`
+
+### `mute_record`
+
+Shows the mute record on chat.
+
+**Usage:** `/mute_record <player_or_ip>`
+
+This prints one mute entry per line, with the time the mute came into effect,
+the expiration time (if applicable), the reason, and the source of the mute.
+The record is printed to chat with one entry per line.
+
+**Example:** `/mute_record Joe`
+
+### `mute_wl`
+
+Manages the whitelist.
+
+**Usage:** `/mute_wl (add|del|get) <player_or_ip>`
+
+Whitelisted players are allowed to talk at the server even if it's otherwise marked
+as muted. This is useful to only allow certain users from shared computers,
+for example.
+
+The `add` subcommand adds the player to the whitelist. The `del` subcommand
+removes the player from the whitelist. The `get` subcommand checks if the
+player is in the whitelist, and prints the status to chat.
+
+**Example:** `/mute_wl add Jane`
+
+### `mute_gui`
+
+Shows a form to consult the database interactively.
+
+**Usage:** `/mute_gui`
+
+## Administrator commands
+
+The following commands require the `server` privilege, so they are only
+available to server administrators.
+
+### `mute_dbi`
+
+Imports mute entries from other database formats.
+
+**Usage:** `/mute_dbi <importer>`
+
+The `importer` argument specifies from which database to import. These are
+the supported import plugins at the time of writing:
+
+* `minetest`: Import entries from Minetest's mute list (`ipban.txt`).
+* `v1`: Old format used by mute (`players.iplist`).
+* `v2`: Old format used by mute (`players.iplist.v2`).
+
+**Example:** `/mute_dbi minetest`
+
+### `mute_cleanup`
+
+Removes all non-muted entries from the xban db.
+
+**Usage:** `/mute_cleanup`
+
+
+====================================================================
+
 
 # Extended Ban Mod for Minetest
 
