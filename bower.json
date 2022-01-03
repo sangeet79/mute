@@ -1,0 +1,16 @@
+{
+  "name": "mute",
+  "description": "Mute system extension with support for temporary mutes. (crude remake of xban2)",
+  "keywords": [
+    "mutw",
+    "administration",
+    "system",
+    "server"
+  ],
+  "homepage": "https://github.com/sangeet79/mute.git",
+  "authors": [
+    "sangeet"
+    "Diego Martínez <lkaezadl3@yahoo.com>"
+  ],
+  "license": "BSD 2-Clause"
+}
